@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Showcase</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .project-container {
+            background: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 900px;
+            width: 90%;
+            transition: transform 0.3s ease-in-out;
+        }
+        .project-container:hover {
+            transform: scale(1.02);
+        }
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+        }
+        h1 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .buttons .btn {
+            text-decoration: none;
+            background: black;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 6px;
+            margin-left: 10px;
+            transition: background 0.3s;
+        }
+        .buttons .btn:hover {
+            background: #333;
+        }
+        section {
+            margin-top: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.5s ease-in-out;
+        }
+        section.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        ul {
+            padding-left: 20px;
+        }
+        iframe {
+            width: 100%;
+            height: 400px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="project-container">
+        <header>
+            <h1 id="project-title">Project Title</h1>
+            <div class="buttons">
+                <a href="#" id="github-link" target="_blank" class="btn">GitHub</a>
+                <a href="#" id="medium-link" target="_blank" class="btn">Medium</a>
+            </div>
+        </header>
+        <section id="project-description">
+            <h2>Project Overview</h2>
+            <p id="project-overview">This section provides an overview of the project, highlighting key features and objectives.</p>
+        </section>
+        <section id="key-insights">
+            <h2>Key Insights</h2>
+            <ul id="insights-list">
+                <li>Insight 1</li>
+                <li>Insight 2</li>
+                <li>Insight 3</li>
+            </ul>
+        </section>
+        <section id="tools-used">
+            <h2>Tools & Technologies</h2>
+            <ul id="tools-list">
+                <li>Tool 1</li>
+                <li>Tool 2</li>
+                <li>Tool 3</li>
+            </ul>
+        </section>
+        <section id="challenges">
+            <h2>Challenges Faced</h2>
+            <p id="challenges-text">Briefly describe the challenges you encountered while working on the project and how you overcame them.</p>
+        </section>
+        <section id="video-presentation">
+            <h2>Project Walkthrough</h2>
+            <iframe id="youtube-video" src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
+        </section>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const sections = document.querySelectorAll("section");
+            const observer = new IntersectionObserver(entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                    }
+                });
+            }, { threshold: 0.2 });
+            sections.forEach(section => observer.observe(section));
+        });
+    </script>
+</body>
+</html>
